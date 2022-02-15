@@ -16,4 +16,4 @@ Após instalado o docker execute o comando abaixo para rodar a aplicação GO:
 docker run --rm --name fc-go mirlisboa/fc-docker-go
 ```
 
-**Observação:** Não consegui imagem menor que 5.76MB, pois o menor linux que encontrei, que era o alpine:3.5 tem 4MB.
+**Observação**: Fonte de conhecimento para compressão do arquivo binário go - https://github.com/xaionaro/documentation/blob/master/golang/reduce-binary-size.md
