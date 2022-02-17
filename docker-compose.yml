@@ -1,0 +1,53 @@
+version: '3'
+
+services:
+  db:
+    build:
+      context: ./mariadb
+    container_name: fcdocker-db
+    environment:
+      MYSQL_ROOT_PASSWORD: '2A94v9rICYb7'
+      MYSQL_DATABASE: 'appdb'
+      MYSQL_USER: 'appusr'
+      MYSQL_PASSWORD: '2A94v9rICYb7'
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'no'
+    volumes:
+        - ./mariadb/data:/var/lib/mysql
+        - ./mariadb/init:/docker-entrypoint-initdb.d
+    networks:
+      - fcdocker
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-proot"]
+      retries: 3
+      timeout: 5s
+
+  app:
+    build:
+      context: ./nodejs
+    container_name: fcdocker-app
+    entrypoint: dockerize -wait tcp://db:3306 -timeout 180s docker-entrypoint.sh index.js
+    volumes:
+      - ./nodejs:/app
+    networks:
+      - fcdocker
+    depends_on:
+      - db
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: fcdocker-nginx
+    ports:
+        - 8080:80
+    networks:
+      - fcdocker
+    depends_on:
+      - app
+    healthcheck:
+      test: ["CMD-SHELL", "wget -O /dev/null http://localhost || exit 1"]
+      retries: 3
+      timeout: 5s
+
+networks:
+  fcdocker:
+    driver: bridge

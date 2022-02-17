@@ -1,0 +1,16 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Aplicaçao node.js do Desafio Node x Nginx do modulo Docker do curso Full Cycle 2.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Mirela Lisboa Sobreira <mirela@cyberhound.io>",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.3",
+    "faker": "github:mirlisboa/faker.js",
+    "mariadb": "^2.5.5"
+  }
+}
