@@ -1,8 +1,6 @@
 FROM node:17-alpine3.15
 
 RUN apk add --no-cache bash git
-#    openssh-client ca-certificates \
-#    bash git
 
 COPY start-container /usr/local/bin/start-container
 RUN chmod +x /usr/local/bin/start-container
