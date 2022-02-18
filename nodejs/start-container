@@ -1,0 +1,21 @@
+#!/bin/bash
+#-----
+# Instala as Dependêncas do NodeJS, caso necessário, e executa a aplicação.
+#---------------------------------------------------
+
+until nc -z -v -w30 DB 3306
+do
+  echo "Waiting for database connection..."
+  sleep 5
+done
+
+cd /app
+
+# Instala os modulos caso não exista
+if [ ! -d "/app/node_modules" ]; then
+    echo "Installing modules..."
+    npm install
+fi
+
+# Executa a aplicação
+node index.js

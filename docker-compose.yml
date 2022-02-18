@@ -25,7 +25,6 @@ services:
     build:
       context: ./nodejs
     container_name: fcdocker-app
-    entrypoint: dockerize -wait tcp://db:3306 -timeout 180s docker-entrypoint.sh index.js
     volumes:
       - ./nodejs:/app
     networks:

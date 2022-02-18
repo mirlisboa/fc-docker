@@ -43,3 +43,6 @@ Na primeira vez que rodar o compose haverá uma demora pois o MariaDB irá criar
 + https://imasters.com.br/desenvolvimento/mockando-dados-com-faker-js
 + https://github.com/mirlisboa/faker.js
 + https://blog.logrocket.com/how-to-run-a-node-js-server-with-nginx/
++ https://nodejs.org/en/docs/guides/nodejs-docker-webapp/
++ https://stackoverflow.com/questions/30043872/docker-compose-node-modules-not-present-in-a-volume-after-npm-install-succeeds
++ https://nodejs.org/api/modules.html#modules_loading_from_node_modules_folders
